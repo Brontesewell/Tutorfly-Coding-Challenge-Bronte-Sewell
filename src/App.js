@@ -1,14 +1,27 @@
-import React from 'react';
-import './App.css';
+import React, { Component } from "react";
+import "./App.css";
+import Button from "./components/Button";
+import Input from "./components/Input";
+import ClearButton from "./components/ClearButton";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <h1>Hello</h1>
-      </header>
-    </div>
-  );
+class App extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+    };
+  }
+
+
+  render() {
+    return (
+      <div className="App">
+        <div >
+         
+        </div>
+      </div>
+    );
+  }
 }
 
 export default App;
