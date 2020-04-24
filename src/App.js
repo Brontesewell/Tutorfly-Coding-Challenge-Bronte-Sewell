@@ -9,7 +9,7 @@ class App extends Component {
 
     this.state = {
       prevNum: "",
-      input: "123",
+      input: "",
       currentNum: "",
       operator: "",
     };
@@ -62,13 +62,21 @@ class App extends Component {
   equals = () => { 
     this.state.currentNum = this.state.input;
     if (this.state.operator == "+") {
-      console.log("+")
+      this.setState({
+        input: parseInt(this.state.prevNum) + parseInt(this.state.currentNum)
+      });
     } else if (this.state.operator == "-") {
-      console.log("-")
+      this.setState({
+        input: parseInt(this.state.prevNum) - parseInt(this.state.currentNum)
+      });
     } else if (this.state.operator == "*") {
-      console.log("*")
+      this.setState({
+        input: parseInt(this.state.prevNum) * parseInt(this.state.currentNum)
+      });
     } else if (this.state.operator == "/") {
-      console.log("/")
+      this.setState({
+        input: parseInt(this.state.prevNum) / parseInt(this.state.currentNum)
+      });
     }
   }
   
