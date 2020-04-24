@@ -25,6 +25,39 @@ class App extends Component {
     this.setState({ input: "" });
   };
 
+  subtract = () => {
+    this.state.prevNum = ????;
+    this.state.operator = "-";
+    this.setState({ 
+      input: "" 
+    });
+  };
+
+
+  add = () => {
+    this.state.prevNum = ????;
+    this.state.operator = "+";
+    this.setState({ 
+      input: "" 
+    });
+  };
+  
+  divide = () => {
+    this.state.prevNum = ????;
+    this.state.operator = "/";
+    this.setState({ 
+      input: "" 
+    });
+  };
+  
+  multiply = () => {
+    this.state.prevNum = ????;
+    this.state.operator = "*";
+    this.setState({ 
+      input: ""
+     });
+  };
+  
 
   render() {
     console.log(this.state.input)
