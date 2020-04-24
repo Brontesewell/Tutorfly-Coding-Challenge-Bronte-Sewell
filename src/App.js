@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import "./App.css";
 import Input from "./components/Input";
 import ButtonToClear from "./components/ButtonToClear";
+import ButtonsForFunc from "./components/ButtonsForFunc";
+
 
 class App extends Component {
   constructor(props) {
@@ -88,21 +90,21 @@ class App extends Component {
         <div >
          <h1>Hello World</h1>
          <Input input={this.state.input}/>
-         <button handleNumClick={this.addToInput}>0</button>
-         <button handleNumClick={this.addToInput}>1</button>
-         <button handleNumClick={this.addToInput}>2</button>
-         <button handleNumClick={this.addToInput}>3</button>
-         <button handleNumClick={this.addToInput}>4</button>         <button handleClick={this.addToInput}>7</button>
-         <button handleNumClick={this.addToInput}>5</button>
-         <button handleNumClick={this.addToInput}>6</button>
-         <button handleNumClick={this.addToInput}>7</button>
-         <button handleNumClick={this.addToInput}>8</button>
-         <button handleNumClick={this.addToInput}>9</button>
-         <button handleNumClick={this.divide}>/</button>
-         <button handleNumClick={this.multiply}>*</button>
-         <button handleNumClick={this.add}>+</button>
-         <button handleNumClick={this.subtract}>-</button>
-         <button handleNumClick={this.equals}>=</button>
+         <ButtonsForFunc handleNumClick={this.addToInput}>0</ButtonsForFunc>
+         <ButtonsForFunc handleNumClick={this.addToInput}>1</ButtonsForFunc>
+         <ButtonsForFunc handleNumClick={this.addToInput}>2</ButtonsForFunc>
+         <ButtonsForFunc handleNumClick={this.addToInput}>3</ButtonsForFunc>
+         <ButtonsForFunc handleNumClick={this.addToInput}>4</ButtonsForFunc> 
+         <ButtonsForFunc handleNumClick={this.addToInput}>5</ButtonsForFunc>
+         <ButtonsForFunc handleNumClick={this.addToInput}>6</ButtonsForFunc>
+         <ButtonsForFunc handleNumClick={this.addToInput}>7</ButtonsForFunc>
+         <ButtonsForFunc handleNumClick={this.addToInput}>8</ButtonsForFunc>
+         <ButtonsForFunc handleNumClick={this.addToInput}>9</ButtonsForFunc>
+         <ButtonsForFunc handleNumClick={this.divide}>/</ButtonsForFunc>
+         <ButtonsForFunc handleNumClick={this.multiply}>*</ButtonsForFunc>
+         <ButtonsForFunc handleNumClick={this.add}>+</ButtonsForFunc>
+         <ButtonsForFunc handleNumClick={this.subtract}>-</ButtonsForFunc>
+         <ButtonsForFunc handleNumClick={this.equals}>=</ButtonsForFunc>
 
          <ButtonToClear clearInput={this.clearInput}>Clear</ButtonToClear>
 
