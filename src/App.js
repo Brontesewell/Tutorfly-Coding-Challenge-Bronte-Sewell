@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./App.css";
+import Input from "./components/Input";
 
 class App extends Component {
   constructor(props) {
@@ -7,8 +8,9 @@ class App extends Component {
 
     this.state = {
       prevNum: "",
-      input: "",
+      input: "123",
       currentNum: "",
+      operator: "",
     };
   }
 
@@ -17,14 +19,20 @@ class App extends Component {
       input: this.state.input + value 
     });
   };
+  
+
+  clearInput = () => {
+    this.setState({ input: "" });
+  };
 
 
   render() {
+    console.log(this.state.input)
     return (
       <div className="App">
         <div >
          <h1>Hello World</h1>
-         <h1>{this.state.input}</h1>
+         <Input input={this.state.input}/>
         </div>
       </div>
     );
