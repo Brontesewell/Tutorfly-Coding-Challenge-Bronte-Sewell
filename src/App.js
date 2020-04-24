@@ -6,8 +6,17 @@ class App extends Component {
     super(props);
 
     this.state = {
+      prevNum: "",
+      input: "",
+      currentNum: "",
     };
   }
+
+  addToInput = value => {
+    this.setState({ 
+      input: this.state.input + value 
+    });
+  };
 
 
   render() {
@@ -15,6 +24,7 @@ class App extends Component {
       <div className="App">
         <div >
          <h1>Hello World</h1>
+         <h1>{this.state.input}</h1>
         </div>
       </div>
     );
