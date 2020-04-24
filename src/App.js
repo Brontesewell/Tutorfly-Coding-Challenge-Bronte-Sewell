@@ -26,7 +26,7 @@ class App extends Component {
   };
 
   subtract = () => {
-    this.state.prevNum = ????;
+    this.state.prevNum = this.state.input
     this.state.operator = "-";
     this.setState({ 
       input: "" 
@@ -35,7 +35,7 @@ class App extends Component {
 
 
   add = () => {
-    this.state.prevNum = ????;
+    this.state.prevNum = this.state.input
     this.state.operator = "+";
     this.setState({ 
       input: "" 
@@ -43,7 +43,7 @@ class App extends Component {
   };
   
   divide = () => {
-    this.state.prevNum = ????;
+    this.state.prevNum = this.state.input
     this.state.operator = "/";
     this.setState({ 
       input: "" 
@@ -51,7 +51,7 @@ class App extends Component {
   };
   
   multiply = () => {
-    this.state.prevNum = ????;
+    this.state.prevNum = this.state.input
     this.state.operator = "*";
     this.setState({ 
       input: ""
@@ -66,6 +66,12 @@ class App extends Component {
         <div >
          <h1>Hello World</h1>
          <Input input={this.state.input}/>
+
+
+         <button handleClick={this.divide}>/</button>
+         <button handleClick={this.multiply}>*</button>
+         <button handleClick={this.add}>+</button>
+         <button handleClick={this.subtract}>-</button>
         </div>
       </div>
     );
