@@ -1,8 +1,5 @@
 import React, { Component } from "react";
 import "./App.css";
-import Button from "./components/Button";
-import Input from "./components/Input";
-import ClearButton from "./components/ClearButton";
 
 class App extends Component {
   constructor(props) {
@@ -17,7 +14,7 @@ class App extends Component {
     return (
       <div className="App">
         <div >
-         
+         <h1>Hello World</h1>
         </div>
       </div>
     );
