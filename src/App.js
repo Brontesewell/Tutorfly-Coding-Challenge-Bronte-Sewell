@@ -60,8 +60,16 @@ class App extends Component {
   };
 
   equals = () => { 
-
-    console.log("equals")
+    this.state.currentNum = this.state.input;
+    if (this.state.operator == "+") {
+      console.log("+")
+    } else if (this.state.operator == "-") {
+      console.log("-")
+    } else if (this.state.operator == "*") {
+      console.log("*")
+    } else if (this.state.operator == "/") {
+      console.log("/")
+    }
   }
   
 
