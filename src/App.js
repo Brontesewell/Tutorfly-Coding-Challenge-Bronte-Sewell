@@ -58,6 +58,11 @@ class App extends Component {
       input: ""
      });
   };
+
+  equals = () => { 
+
+    console.log("equals")
+  }
   
 
   render() {
@@ -67,20 +72,21 @@ class App extends Component {
         <div >
          <h1>Hello World</h1>
          <Input input={this.state.input}/>
-         <button handleClick={this.addToInput}>0</button>
-         <button handleClick={this.addToInput}>1</button>
-         <button handleClick={this.addToInput}>2</button>
-         <button handleClick={this.addToInput}>3</button>
-         <button handleClick={this.addToInput}>4</button>         <button handleClick={this.addToInput}>7</button>
-         <button handleClick={this.addToInput}>5</button>
-         <button handleClick={this.addToInput}>6</button>
-         <button handleClick={this.addToInput}>7</button>
-         <button handleClick={this.addToInput}>8</button>
-         <button handleClick={this.addToInput}>9</button>
-         <button handleClick={this.divide}>/</button>
-         <button handleClick={this.multiply}>*</button>
-         <button handleClick={this.add}>+</button>
-         <button handleClick={this.subtract}>-</button>
+         <button handleNumClick={this.addToInput}>0</button>
+         <button handleNumClick={this.addToInput}>1</button>
+         <button handleNumClick={this.addToInput}>2</button>
+         <button handleNumClick={this.addToInput}>3</button>
+         <button handleNumClick={this.addToInput}>4</button>         <button handleClick={this.addToInput}>7</button>
+         <button handleNumClick={this.addToInput}>5</button>
+         <button handleNumClick={this.addToInput}>6</button>
+         <button handleNumClick={this.addToInput}>7</button>
+         <button handleNumClick={this.addToInput}>8</button>
+         <button handleNumClick={this.addToInput}>9</button>
+         <button handleNumClick={this.divide}>/</button>
+         <button handleNumClick={this.multiply}>*</button>
+         <button handleNumClick={this.add}>+</button>
+         <button handleNumClick={this.subtract}>-</button>
+         <button handleNumClick={this.equals}>=</button>
 
          <ButtonToClear clearInput={this.clearInput}>Clear</ButtonToClear>
 
