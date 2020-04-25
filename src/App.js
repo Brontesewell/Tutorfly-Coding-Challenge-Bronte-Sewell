@@ -92,7 +92,7 @@ class App extends Component {
   
 
   render() {
-    console.log(this.state.input)
+    console.log("Input is:", this.state.input)
     return (
       <div className="App">
         <div >
