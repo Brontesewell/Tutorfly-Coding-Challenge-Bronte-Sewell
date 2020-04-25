@@ -131,7 +131,7 @@ class App extends Component {
             </div>
 
             <div id="clear">
-               <ButtonToClear clearInput={this.clearInput}>Clear</ButtonToClear>
+               <ButtonToClear clearInput={this.clearInput}/>
             </div>
         </div>
       </div>
