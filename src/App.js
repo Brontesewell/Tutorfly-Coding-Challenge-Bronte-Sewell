@@ -17,7 +17,7 @@ class App extends Component {
     };
   }
 
-  addToInput = value => {
+  tallytoInput = value => {
     this.setState({ 
       input: this.state.input + value 
     });
@@ -100,25 +100,25 @@ class App extends Component {
          <h4 id="name">Bronte Sewell</h4>
          <Input input={this.state.input}/>
             <div className="rows">
-              <ButtonsForFunc handleNumClick={this.addToInput}>1</ButtonsForFunc>
-              <ButtonsForFunc handleNumClick={this.addToInput}>2</ButtonsForFunc>
-              <ButtonsForFunc handleNumClick={this.addToInput}>3</ButtonsForFunc>
+              <ButtonsForFunc handleNumClick={this.tallytoInput}>1</ButtonsForFunc>
+              <ButtonsForFunc handleNumClick={this.tallytoInput}>2</ButtonsForFunc>
+              <ButtonsForFunc handleNumClick={this.tallytoInput}>3</ButtonsForFunc>
             </div>
 
             <div className="rows">
-              <ButtonsForFunc handleNumClick={this.addToInput}>4</ButtonsForFunc> 
-              <ButtonsForFunc handleNumClick={this.addToInput}>5</ButtonsForFunc>
-              <ButtonsForFunc handleNumClick={this.addToInput}>6</ButtonsForFunc>
+              <ButtonsForFunc handleNumClick={this.tallytoInput}>4</ButtonsForFunc> 
+              <ButtonsForFunc handleNumClick={this.tallytoInput}>5</ButtonsForFunc>
+              <ButtonsForFunc handleNumClick={this.tallytoInput}>6</ButtonsForFunc>
             </div>
 
             <div className="rows">
-              <ButtonsForFunc handleNumClick={this.addToInput}>7</ButtonsForFunc>
-              <ButtonsForFunc handleNumClick={this.addToInput}>8</ButtonsForFunc>
-              <ButtonsForFunc handleNumClick={this.addToInput}>9</ButtonsForFunc>
+              <ButtonsForFunc handleNumClick={this.tallytoInput}>7</ButtonsForFunc>
+              <ButtonsForFunc handleNumClick={this.tallytoInput}>8</ButtonsForFunc>
+              <ButtonsForFunc handleNumClick={this.tallytoInput}>9</ButtonsForFunc>
             </div>
 
             <div className="rows">
-              <ButtonsForFunc handleNumClick={this.addToInput}>0</ButtonsForFunc>
+              <ButtonsForFunc handleNumClick={this.tallytoInput}>0</ButtonsForFunc>
               <ButtonsForFunc handleNumClick={this.divide}>/</ButtonsForFunc>
               <ButtonsForFunc handleNumClick={this.multiply}>*</ButtonsForFunc>
             </div>
@@ -126,6 +126,7 @@ class App extends Component {
             <div className="rows">
               <ButtonsForFunc handleNumClick={this.add}>+</ButtonsForFunc>
               <ButtonsForFunc handleNumClick={this.subtract}>-</ButtonsForFunc>
+              <ButtonsForFunc handleNumClick={this.decimal}>.</ButtonsForFunc>
               <ButtonsForFunc handleNumClick={this.equals}>=</ButtonsForFunc>
             </div>
 
