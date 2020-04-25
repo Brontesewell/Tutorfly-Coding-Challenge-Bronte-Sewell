@@ -4,7 +4,7 @@ class ButtonsForFunc extends Component {
 
   render() {
     return( 
-      <div onClick={() => this.props.handleNumClick(this.props.children)}>
+      <div className="buttons" onClick={() => this.props.handleNumClick(this.props.children)}>
         {this.props.children}
       </div>
     )

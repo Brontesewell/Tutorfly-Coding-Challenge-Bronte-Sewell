@@ -81,6 +81,7 @@ class App extends Component {
       });
     }
   }
+
   
 
   render() {
@@ -90,24 +91,39 @@ class App extends Component {
         <div >
          <h1>Hello World</h1>
          <Input input={this.state.input}/>
-         <ButtonsForFunc handleNumClick={this.addToInput}>0</ButtonsForFunc>
-         <ButtonsForFunc handleNumClick={this.addToInput}>1</ButtonsForFunc>
-         <ButtonsForFunc handleNumClick={this.addToInput}>2</ButtonsForFunc>
-         <ButtonsForFunc handleNumClick={this.addToInput}>3</ButtonsForFunc>
-         <ButtonsForFunc handleNumClick={this.addToInput}>4</ButtonsForFunc> 
-         <ButtonsForFunc handleNumClick={this.addToInput}>5</ButtonsForFunc>
-         <ButtonsForFunc handleNumClick={this.addToInput}>6</ButtonsForFunc>
-         <ButtonsForFunc handleNumClick={this.addToInput}>7</ButtonsForFunc>
-         <ButtonsForFunc handleNumClick={this.addToInput}>8</ButtonsForFunc>
-         <ButtonsForFunc handleNumClick={this.addToInput}>9</ButtonsForFunc>
-         <ButtonsForFunc handleNumClick={this.divide}>/</ButtonsForFunc>
-         <ButtonsForFunc handleNumClick={this.multiply}>*</ButtonsForFunc>
-         <ButtonsForFunc handleNumClick={this.add}>+</ButtonsForFunc>
-         <ButtonsForFunc handleNumClick={this.subtract}>-</ButtonsForFunc>
-         <ButtonsForFunc handleNumClick={this.equals}>=</ButtonsForFunc>
+            <div className="rows">
+              <ButtonsForFunc handleNumClick={this.addToInput}>1</ButtonsForFunc>
+              <ButtonsForFunc handleNumClick={this.addToInput}>2</ButtonsForFunc>
+              <ButtonsForFunc handleNumClick={this.addToInput}>3</ButtonsForFunc>
+            </div>
 
-         <ButtonToClear clearInput={this.clearInput}>Clear</ButtonToClear>
+            <div className="rows">
+              <ButtonsForFunc handleNumClick={this.addToInput}>4</ButtonsForFunc> 
+              <ButtonsForFunc handleNumClick={this.addToInput}>5</ButtonsForFunc>
+              <ButtonsForFunc handleNumClick={this.addToInput}>6</ButtonsForFunc>
+            </div>
 
+            <div className="rows">
+              <ButtonsForFunc handleNumClick={this.addToInput}>7</ButtonsForFunc>
+              <ButtonsForFunc handleNumClick={this.addToInput}>8</ButtonsForFunc>
+              <ButtonsForFunc handleNumClick={this.addToInput}>9</ButtonsForFunc>
+            </div>
+
+            <div className="rows">
+              <ButtonsForFunc handleNumClick={this.addToInput}>0</ButtonsForFunc>
+              <ButtonsForFunc handleNumClick={this.divide}>/</ButtonsForFunc>
+              <ButtonsForFunc handleNumClick={this.multiply}>*</ButtonsForFunc>
+            </div>
+
+            <div className="rows">
+              <ButtonsForFunc handleNumClick={this.add}>+</ButtonsForFunc>
+              <ButtonsForFunc handleNumClick={this.subtract}>-</ButtonsForFunc>
+              <ButtonsForFunc handleNumClick={this.equals}>=</ButtonsForFunc>
+            </div>
+
+            <div id="clear">
+               <ButtonToClear clearInput={this.clearInput}>Clear</ButtonToClear>
+            </div>
         </div>
       </div>
     );

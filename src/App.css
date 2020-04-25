@@ -8,11 +8,26 @@
 
 
 .input {
-  height: 100px;
+  height: 50px;
   padding: 0.5em;
   align-items: center;
   display: flex;
   font-size: 25px;
   color: #fff;
   background-color: #000;
+}
+
+
+.rows{
+  display: flex;
+  width: 100%; 
+}
+
+
+.buttons{
+  background-color: grey;
+  border-style: solid;
+  border-color: black;
+  border-width: thin;
+  padding: 10px 20px
 }
