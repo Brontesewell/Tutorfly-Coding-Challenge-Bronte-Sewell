@@ -4,6 +4,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: #f0e0df;
 }
 
 
@@ -20,7 +21,7 @@
 
 .rows{
   display: flex;
-  width: 100%; 
+  width: 100%;
 }
 
 
@@ -29,5 +30,26 @@
   border-style: solid;
   border-color: black;
   border-width: thin;
-  padding: 10px 20px
+  padding: 10px 20px;
+  width: 100%;
 }
+
+.buttons:hover{
+  background-color: lightgray;
+}
+
+      
+#clear {
+  background-color: lightsalmon;
+  padding: 2px;
+}
+
+#name{
+  text-align: center;
+}
+
+#title{
+  text-align: center;
+  text-decoration: underline;
+}
+

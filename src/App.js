@@ -82,6 +82,13 @@ class App extends Component {
     }
   }
 
+  decimal = value => {
+    if (this.state.input.indexOf(".") === -1) {
+      this.setState({ 
+        input: this.state.input + value 
+      });
+    }
+  };
   
 
   render() {
@@ -89,7 +96,8 @@ class App extends Component {
     return (
       <div className="App">
         <div >
-         <h1>Hello World</h1>
+         <h1 id="title">Calculator</h1>
+         <h4 id="name">Bronte Sewell</h4>
          <Input input={this.state.input}/>
             <div className="rows">
               <ButtonsForFunc handleNumClick={this.addToInput}>1</ButtonsForFunc>
