@@ -65,19 +65,19 @@ class App extends Component {
     this.state.currentNum = this.state.input;
     if (this.state.operator == "+") {
       this.setState({
-        input: parseInt(this.state.prevNum) + parseInt(this.state.currentNum)
+        input: parseFloat(this.state.prevNum) + parseFloat(this.state.currentNum)
       });
     } else if (this.state.operator == "-") {
       this.setState({
-        input: parseInt(this.state.prevNum) - parseInt(this.state.currentNum)
+        input: parseFloat(this.state.prevNum) - parseFloat(this.state.currentNum)
       });
     } else if (this.state.operator == "*") {
       this.setState({
-        input: parseInt(this.state.prevNum) * parseInt(this.state.currentNum)
+        input: parseFloat(this.state.prevNum) * parseFloat(this.state.currentNum)
       });
     } else if (this.state.operator == "/") {
       this.setState({
-        input: parseInt(this.state.prevNum) / parseInt(this.state.currentNum)
+        input: parseFloat(this.state.prevNum) / parseFloat(this.state.currentNum)
       });
     }
   }
