@@ -57,6 +57,10 @@ class App extends Component {
       this.setState({
         input: parseFloat(this.state.prevNum) / parseFloat(this.state.currentNum)
       });
+    } else if (this.state.operator === "**") {
+      this.setState({
+        input: parseFloat(this.state.prevNum) ** parseFloat(this.state.currentNum)
+      })
     }
   }
 
@@ -125,12 +129,19 @@ plusMinusOperator = () => {
             <div className="rows">
               <button className="buttons" value="+" name="operator" onClick={this.operatorClicked}>+</button>
               <button className="buttons" value="-" name="operator" onClick={this.operatorClicked}>-</button>
-              <ButtonsForFunc handleNumClick={this.decimal}>.</ButtonsForFunc>
-              <ButtonsForFunc handleNumClick={this.equals}>=</ButtonsForFunc>
+              <button className="buttons" value="**" name="operator" >√</button>
             </div>
 
             <div className="rows">
-              <button  onClick={this.plusMinusOperator}>+/-</button>
+              <ButtonsForFunc handleNumClick={this.decimal}>.</ButtonsForFunc>
+              <button className="buttons" onClick={this.plusMinusOperator}>+/-</button>
+              <button className="buttons" value="**" name="operator" onClick={this.operatorClicked}>^</button>
+              <ButtonsForFunc handleNumClick={this.equals}>=</ButtonsForFunc>
+              {/* √ */}
+              
+            </div>
+
+            <div className="rows">
                <ButtonToClear clearInput={this.clearInput}/>
                <button id="back-button" onClick={() => this.backspace()}>Back</button>
             </div>
