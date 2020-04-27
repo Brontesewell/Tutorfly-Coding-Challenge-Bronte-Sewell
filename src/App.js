@@ -92,6 +92,20 @@ plusMinusOperator = () => {
   })
 }
 
+
+squareRoot = () => {
+  this.setState({
+    input: this.state.input **(1/2)
+  })
+
+  // function squareRoot(number){
+  //   var square = 1, i=0;
+  //   while(true)
+  //   {
+  //   i = i + 1;
+  //   square = (number / square + square)
+}
+
   render() {
     // console.log("Input is:", this.state.input)
     // this.state.prevNum, this.state.operator, this.state.currentNum, this.state.input, "curr is:",  "opp is:", this.state.operator
@@ -129,7 +143,7 @@ plusMinusOperator = () => {
             <div className="rows">
               <button className="buttons" value="+" name="operator" onClick={this.operatorClicked}>+</button>
               <button className="buttons" value="-" name="operator" onClick={this.operatorClicked}>-</button>
-              <button className="buttons" value="**" name="operator" >√</button>
+              <button className="buttons" onClick={this.squareRoot} >√</button>
             </div>
 
             <div className="rows">
