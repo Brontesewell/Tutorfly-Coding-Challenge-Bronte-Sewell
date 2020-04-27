@@ -41,7 +41,11 @@
       
 #clear {
   background-color: lightsalmon;
-  padding: 2px;
+  padding: 2px 10px;
+}
+
+#clear:hover {
+  background-color: rgb(237, 132, 90);
 }
 
 #name{
@@ -53,3 +57,14 @@
   text-decoration: underline;
 }
 
+
+#back-button{
+  background-color: skyblue;
+  padding: 2px 5px;
+}
+
+
+#back-button:hover{
+  background-color: blue;
+  color: white;
+}

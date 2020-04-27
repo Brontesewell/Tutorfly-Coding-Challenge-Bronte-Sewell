@@ -28,54 +28,32 @@ class App extends Component {
     this.setState({ input: "" });
   };
 
-  subtract = () => {
-    this.state.prevNum = this.state.input
-    this.state.operator = "-";
-    this.setState({ 
-      input: "" 
-    });
-  };
 
-
-  add = () => {
+  operatorClicked = (e) => {
+    const {value} = e.target
     this.state.prevNum = this.state.input
-    this.state.operator = "+";
     this.setState({ 
-      input: "" 
+      input: "",
+      operator: value
+      // you could also use [name]: value and add name to const {value, name} = e.target
     });
-  };
-  
-  divide = () => {
-    this.state.prevNum = this.state.input
-    this.state.operator = "/";
-    this.setState({ 
-      input: "" 
-    });
-  };
-  
-  multiply = () => {
-    this.state.prevNum = this.state.input
-    this.state.operator = "*";
-    this.setState({ 
-      input: ""
-     });
   };
 
   equals = () => { 
     this.state.currentNum = this.state.input;
-    if (this.state.operator == "+") {
+    if (this.state.operator === "+") {
       this.setState({
         input: parseFloat(this.state.prevNum) + parseFloat(this.state.currentNum)
       });
-    } else if (this.state.operator == "-") {
+    } else if (this.state.operator === "-") {
       this.setState({
         input: parseFloat(this.state.prevNum) - parseFloat(this.state.currentNum)
       });
-    } else if (this.state.operator == "*") {
+    } else if (this.state.operator === "*") {
       this.setState({
         input: parseFloat(this.state.prevNum) * parseFloat(this.state.currentNum)
       });
-    } else if (this.state.operator == "/") {
+    } else if (this.state.operator === "/") {
       this.setState({
         input: parseFloat(this.state.prevNum) / parseFloat(this.state.currentNum)
       });
@@ -89,10 +67,31 @@ class App extends Component {
       });
     }
   };
+
+  backspace = () => {
+    this.setState({
+        input: this.state.input.toString().slice(0, -1)
+    })
+};
   
+addZeroToInput = value => {
+  if (this.state.input !== "") {
+    this.setState({ 
+      input: this.state.input + value 
+    });
+  }
+};
+
+plusMinusOperator = () => {
+  this.setState({
+    input: this.state.input * -1
+  })
+}
 
   render() {
-    console.log("Input is:", this.state.input)
+    // console.log("Input is:", this.state.input)
+    // this.state.prevNum, this.state.operator, this.state.currentNum, this.state.input, "curr is:",  "opp is:", this.state.operator
+    console.log(this.state.operator)
     return (
       <div className="App">
         <div >
@@ -118,20 +117,22 @@ class App extends Component {
             </div>
 
             <div className="rows">
-              <ButtonsForFunc handleNumClick={this.tallytoInput}>0</ButtonsForFunc>
-              <ButtonsForFunc handleNumClick={this.divide}>/</ButtonsForFunc>
-              <ButtonsForFunc handleNumClick={this.multiply}>*</ButtonsForFunc>
+              <ButtonsForFunc handleNumClick={this.addZeroToInput}>0</ButtonsForFunc>
+              <button className="buttons" value="/" name="operator" onClick={this.operatorClicked}>/</button>
+              <button className="buttons" value="*" name="operator" onClick={this.operatorClicked}>*</button>
             </div>
 
             <div className="rows">
-              <ButtonsForFunc handleNumClick={this.add}>+</ButtonsForFunc>
-              <ButtonsForFunc handleNumClick={this.subtract}>-</ButtonsForFunc>
+              <button className="buttons" value="+" name="operator" onClick={this.operatorClicked}>+</button>
+              <button className="buttons" value="-" name="operator" onClick={this.operatorClicked}>-</button>
               <ButtonsForFunc handleNumClick={this.decimal}>.</ButtonsForFunc>
               <ButtonsForFunc handleNumClick={this.equals}>=</ButtonsForFunc>
             </div>
 
-            <div id="clear">
+            <div className="rows">
+              <button  onClick={this.plusMinusOperator}>+/-</button>
                <ButtonToClear clearInput={this.clearInput}/>
+               <button id="back-button" onClick={() => this.backspace()}>Back</button>
             </div>
         </div>
       </div>
