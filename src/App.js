@@ -22,14 +22,25 @@ class App extends Component {
 
 
   tallytoInput = value => {
-    this.setState({ 
-      input: this.state.input + value 
-    });
+    if ((this.state.currentNum === "") && this.state.prevNum === "" && this.state.operator === "-") {
+      this.setState({ 
+        input: this.state.input + (value * -1)  
+      });
+    } else {
+      this.setState({ 
+        input: this.state.input + value 
+      });
+    }
   };
   
 
   clearInput = () => {
-    this.setState({ input: "" });
+    this.setState({ 
+      prevNum: "",
+      input: "",
+      currentNum: "",
+      operator: "",
+   });
   };
 
   
