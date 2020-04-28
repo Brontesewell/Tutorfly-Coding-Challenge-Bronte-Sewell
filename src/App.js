@@ -17,6 +17,7 @@ class App extends Component {
     };
     this.factorialSinCos = this.factorialSinCos.bind(this);
     this.absVal = this.absVal.bind(this);
+    // this.log = this.log.bind(this);
   }
 
 
@@ -164,6 +165,7 @@ class App extends Component {
       input: this.state.input **(1/2)
     })
   }
+  
   
 
 
