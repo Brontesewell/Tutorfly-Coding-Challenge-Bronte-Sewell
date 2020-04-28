@@ -19,6 +19,7 @@ class App extends Component {
     this.absVal = this.absVal.bind(this);
   }
 
+
   tallytoInput = value => {
     this.setState({ 
       input: this.state.input + value 
@@ -30,7 +31,7 @@ class App extends Component {
     this.setState({ input: "" });
   };
 
-
+  
   operatorClicked = (e) => {
     const {value} = e.target
     this.state.prevNum = this.state.input
@@ -41,8 +42,30 @@ class App extends Component {
     });
     console.log(this.state.operator)
   };
+  
+
+  backspace = () => {
+    try {
+      this.setState({
+        input: this.state.input.toString().slice(0, -1)
+      })
+    } catch (e) {
+        this.setState({
+            input: "error"
+        })
+      }
+  };
 
 
+  decimal = value => {
+    if (this.state.input.indexOf(".") === -1) {
+      this.setState({ 
+        input: this.state.input + value 
+      });
+    }
+  };
+
+  
   equals = () => { 
     this.state.currentNum = this.state.input;
     if (this.state.operator === "+") {
@@ -142,19 +165,6 @@ class App extends Component {
     })
   }
   
-  decimal = value => {
-    if (this.state.input.indexOf(".") === -1) {
-      this.setState({ 
-        input: this.state.input + value 
-      });
-    }
-  };
-
-  backspace = () => {
-    this.setState({
-      input: this.state.input.toString().slice(0, -1)
-    })
-  };
 
 
   render() {
