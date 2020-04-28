@@ -15,6 +15,7 @@ class App extends Component {
       currentNum: "",
       operator: "",
     };
+    // this.factorial = this.factorial.bind(this);
   }
 
   tallytoInput = value => {
@@ -37,7 +38,9 @@ class App extends Component {
       operator: value
       // you could also use [name]: value and add name to const {value, name} = e.target
     });
+    console.log(this.state.operator)
   };
+
 
   equals = () => { 
     this.state.currentNum = this.state.input;
@@ -57,33 +60,39 @@ class App extends Component {
       this.setState({
         input: parseFloat(this.state.prevNum) / parseFloat(this.state.currentNum)
       });
-    } else if (this.state.operator === "**") {
+    } else if (this.state.operator === "factorial") {
       this.setState({
         input: parseFloat(this.state.prevNum) ** parseFloat(this.state.currentNum)
       })
     } 
   }
 
-  // 𝑥−𝑥3/6
-  // (e**(X*1j)).imag
-  // sin = () => {
-  //   let x = 1;
-  //   while (x > 100) {
-  //     console.log("hi")
-  //   }
 
-  //   // this.setState({
-  //   //   input: this.state.input - ((this.state.input ** 3) / 6)
-  //   // })
-  // }
+  sin = () => {
+    let x = this.state.input;
 
+    this.setState({
+        input: (x - ((x ** 3) / this.factorial(3)) + ((x ** 5) / this.factorial(5)) - ((x ** 7) / this.factorial(7)) + ((x ** 9) / this.factorial(9))).toString()
+      })
+    }
+
+    cos = () => {
+      let x = this.state.input;
+  
+      this.setState({
+          input: (x - ((x ** 2) / this.factorial(2)) + ((x ** 4) / this.factorial(4)) - ((x ** 6) / this.factorial(6)) + ((x ** 8) / this.factorial(8))).toString()
+        })
+      }
+
+  
+  
   factorial = () => {
     let num = this.state.input;
     if (num === 0) return 1;
     let f = 1;
     for (let i = 1; i < num; i++) {
         f = f * (i + 1);
-    }
+      }
     this.setState({
       input: f
     })
@@ -99,7 +108,7 @@ class App extends Component {
 
   backspace = () => {
     this.setState({
-        input: this.state.input.toString().slice(0, -1)
+      input: this.state.input.toString().slice(0, -1)
     })
 };
   
@@ -126,10 +135,11 @@ squareRoot = () => {
 
 
 
-  render() {
-    // console.log("Input is:", this.state.input)
-    // this.state.prevNum, this.state.operator, this.state.currentNum, this.state.input, "curr is:",  "opp is:", this.state.operator
-    console.log(this.state.operator)
+render() {
+  // console.log(this.state.operator)
+  // console.log(this.state.prevNum ** this.state.input)
+  
+ 
     return (
       <div className="App">
         <div >
@@ -164,13 +174,15 @@ squareRoot = () => {
               <button className="buttons" value="+" onClick={this.operatorClicked}>+</button>
               <button className="buttons" value="-" onClick={this.operatorClicked}>-</button>
               <button className="buttons" onClick={this.squareRoot} >√</button>
+              <button className="buttons" value="factorial" onClick={this.operatorClicked}>y^x</button>
             </div>
 
             <div className="rows">
               <ButtonsForFunc handleNumClick={this.decimal}>.</ButtonsForFunc>
               <button className="buttons" onClick={this.plusMinusOperator}>+/-</button>
-              <button className="buttons" value="**" onClick={this.operatorClicked}>y^x</button>
               <button className="buttons" onClick={this.factorial}>!</button>
+              <button className="buttons" onClick={this.sin}>sin</button> 
+              <button className="buttons" onClick={this.cos}>cos</button> 
             </div>
 
             <div className="rows">
