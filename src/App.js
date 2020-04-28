@@ -78,10 +78,20 @@ class App extends Component {
       x -= (x / this.absVal(x)) * (2 * 3.14159)
     }
     let estimate = (x - ((x ** 3) / this.factorialSinCos(3)) + ((x ** 5) / this.factorialSinCos(5)) - ((x ** 7) / this.factorialSinCos(7)) + ((x ** 9) / this.factorialSinCos(9))).toString();
-    let boundedEstimate = Math.min(estimate, 1.0);
-    let boundedEstimate2 = Math.max(boundedEstimate, -1.0);
+    // let boundedEstimate = Math.min(estimate, 1.0);
+    // let boundedEstimate2 = Math.max(boundedEstimate, -1.0);
+    // let max = estimate.split(" ").map(Number).sort(function(a, b){return a-b}).pop();
+    // let min = estimate.split(" ").map(Number).sort(function(a, b){return a-b});
+    // console.log(min, "min")
+    // console.log(max, "max")
+    if (estimate > 1.0) {
+      estimate = 1
+    }
+    else if (estimate < -1.0) {
+      estimate = -1.0
+    }
     this.setState({
-        input: boundedEstimate2
+        input: estimate
       })
     }
 
@@ -91,10 +101,14 @@ class App extends Component {
       x -= (x / this.absVal(x)) * (2 * 3.14159)
     }
     let estimate = (1 - ((x ** 2) / this.factorialSinCos(2)) + ((x ** 4) / this.factorialSinCos(4)) - ((x ** 6) / this.factorialSinCos(6)) + ((x ** 8) / this.factorialSinCos(8))).toString();
-    let boundedEstimate = Math.min(estimate, 1.0);
-    let boundedEstimate2 = Math.max(boundedEstimate, -1.0);
+    if (estimate > 1.0) {
+      estimate = 1
+    }
+    else if (estimate < -1.0) {
+      estimate = -1.0
+    }
     this.setState({
-        input: boundedEstimate2
+        input: estimate
       })
     }
 
@@ -120,6 +134,20 @@ class App extends Component {
     })
   }
 
+  
+  plusMinusOperator = () => {
+    this.setState({
+      input: this.state.input * -1
+    })
+  }
+  
+
+  squareRoot = () => {
+    this.setState({
+      input: this.state.input **(1/2)
+    })
+  }
+  
   decimal = value => {
     if (this.state.input.indexOf(".") === -1) {
       this.setState({ 
@@ -133,28 +161,6 @@ class App extends Component {
       input: this.state.input.toString().slice(0, -1)
     })
   };
-
-  addZeroToInput = value => {
-    if (this.state.input !== "") {
-      this.setState({ 
-        input: this.state.input + value 
-      });
-    }
-  };
-
-  plusMinusOperator = () => {
-    this.setState({
-      input: this.state.input * -1
-    })
-  }
-
-
-  squareRoot = () => {
-    this.setState({
-      input: this.state.input **(1/2)
-    })
-  }
-
 
 
   render() {
@@ -187,7 +193,7 @@ class App extends Component {
             </div>
 
             <div className="rows">
-              <ButtonsForFunc handleNumClick={this.addZeroToInput}>0</ButtonsForFunc>
+              <ButtonsForFunc handleNumClick={this.tallytoInput}>0</ButtonsForFunc>
               <button className="buttons" value="/" onClick={this.operatorClicked}>/</button>
               <button className="buttons" value="*" onClick={this.operatorClicked}>*</button>
             </div>
@@ -202,7 +208,7 @@ class App extends Component {
             <div className="rows">
               <ButtonsForFunc handleNumClick={this.decimal}>.</ButtonsForFunc>
               <button className="buttons" onClick={this.plusMinusOperator}>+/-</button>
-              <button className="buttons" onClick={this.factorial}>!</button>
+              <button className="buttons" onClick={this.factorial}>x!</button>
               <button className="buttons" onClick={this.sin}>sin</button> 
               <button className="buttons" onClick={this.cos}>cos</button> 
             </div>
