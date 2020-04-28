@@ -15,7 +15,8 @@ class App extends Component {
       currentNum: "",
       operator: "",
     };
-    // this.factorial = this.factorial.bind(this);
+    this.factorialSinCos = this.factorialSinCos.bind(this);
+    this.absVal = this.absVal.bind(this);
   }
 
   tallytoInput = value => {
@@ -67,25 +68,46 @@ class App extends Component {
     } 
   }
 
+  absVal = (integer) => {
+    return integer < 0 ? -integer : integer;
+  }
 
   sin = () => {
     let x = this.state.input;
-
+    while (this.absVal(x) > ( 2 * 3.14159)) {
+      x -= (x / this.absVal(x)) * (2 * 3.14159)
+    }
+    let estimate = (x - ((x ** 3) / this.factorialSinCos(3)) + ((x ** 5) / this.factorialSinCos(5)) - ((x ** 7) / this.factorialSinCos(7)) + ((x ** 9) / this.factorialSinCos(9))).toString();
+    let boundedEstimate = Math.min(estimate, 1.0);
+    let boundedEstimate2 = Math.max(boundedEstimate, -1.0);
     this.setState({
-        input: (x - ((x ** 3) / this.factorial(3)) + ((x ** 5) / this.factorial(5)) - ((x ** 7) / this.factorial(7)) + ((x ** 9) / this.factorial(9))).toString()
+        input: boundedEstimate2
       })
     }
 
-    cos = () => {
-      let x = this.state.input;
-  
-      this.setState({
-          input: (x - ((x ** 2) / this.factorial(2)) + ((x ** 4) / this.factorial(4)) - ((x ** 6) / this.factorial(6)) + ((x ** 8) / this.factorial(8))).toString()
-        })
-      }
+  cos = () => {
+    let x = this.state.input;
+    while (this.absVal(x) > ( 2 * 3.14159)) {
+      x -= (x / this.absVal(x)) * (2 * 3.14159)
+    }
+    let estimate = (1 - ((x ** 2) / this.factorialSinCos(2)) + ((x ** 4) / this.factorialSinCos(4)) - ((x ** 6) / this.factorialSinCos(6)) + ((x ** 8) / this.factorialSinCos(8))).toString();
+    let boundedEstimate = Math.min(estimate, 1.0);
+    let boundedEstimate2 = Math.max(boundedEstimate, -1.0);
+    this.setState({
+        input: boundedEstimate2
+      })
+    }
 
-  
-  
+
+  factorialSinCos = (value) => {
+    if (value === 0) return 1;
+    let f = 1;
+    for (let i = 1; i < value; i++) {
+        f = f * (i + 1);
+      }
+      return f;
+  }
+
   factorial = () => {
     let num = this.state.input;
     if (num === 0) return 1;
@@ -110,34 +132,34 @@ class App extends Component {
     this.setState({
       input: this.state.input.toString().slice(0, -1)
     })
-};
-  
-addZeroToInput = value => {
-  if (this.state.input !== "") {
-    this.setState({ 
-      input: this.state.input + value 
-    });
+  };
+
+  addZeroToInput = value => {
+    if (this.state.input !== "") {
+      this.setState({ 
+        input: this.state.input + value 
+      });
+    }
+  };
+
+  plusMinusOperator = () => {
+    this.setState({
+      input: this.state.input * -1
+    })
   }
-};
-
-plusMinusOperator = () => {
-  this.setState({
-    input: this.state.input * -1
-  })
-}
 
 
-squareRoot = () => {
-  this.setState({
-    input: this.state.input **(1/2)
-  })
-}
+  squareRoot = () => {
+    this.setState({
+      input: this.state.input **(1/2)
+    })
+  }
 
 
 
-render() {
-  // console.log(this.state.operator)
-  // console.log(this.state.prevNum ** this.state.input)
+  render() {
+    // console.log(this.state.operator)
+    // console.log(this.state.prevNum ** this.state.input)
   
  
     return (
