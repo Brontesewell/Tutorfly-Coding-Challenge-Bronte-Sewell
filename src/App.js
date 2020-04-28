@@ -78,12 +78,6 @@ class App extends Component {
       x -= (x / this.absVal(x)) * (2 * 3.14159)
     }
     let estimate = (x - ((x ** 3) / this.factorialSinCos(3)) + ((x ** 5) / this.factorialSinCos(5)) - ((x ** 7) / this.factorialSinCos(7)) + ((x ** 9) / this.factorialSinCos(9))).toString();
-    // let boundedEstimate = Math.min(estimate, 1.0);
-    // let boundedEstimate2 = Math.max(boundedEstimate, -1.0);
-    // let max = estimate.split(" ").map(Number).sort(function(a, b){return a-b}).pop();
-    // let min = estimate.split(" ").map(Number).sort(function(a, b){return a-b});
-    // console.log(min, "min")
-    // console.log(max, "max")
     if (estimate > 1.0) {
       estimate = 1
     }
@@ -93,7 +87,7 @@ class App extends Component {
     this.setState({
         input: estimate
       })
-    }
+  }
 
   cos = () => {
     let x = this.state.input;
@@ -110,7 +104,7 @@ class App extends Component {
     this.setState({
         input: estimate
       })
-    }
+  }
 
 
   factorialSinCos = (value) => {
@@ -164,9 +158,6 @@ class App extends Component {
 
 
   render() {
-    // console.log(this.state.operator)
-    // console.log(this.state.prevNum ** this.state.input)
-  
  
     return (
       <div className="App">
@@ -207,13 +198,13 @@ class App extends Component {
 
             <div className="rows">
               <ButtonsForFunc handleNumClick={this.decimal}>.</ButtonsForFunc>
-              <button className="buttons" onClick={this.plusMinusOperator}>+/-</button>
               <button className="buttons" onClick={this.factorial}>x!</button>
               <button className="buttons" onClick={this.sin}>sin</button> 
               <button className="buttons" onClick={this.cos}>cos</button> 
             </div>
 
             <div className="rows">
+              <button className="buttons" onClick={this.plusMinusOperator}>+/-</button>
               <ButtonsForFunc handleNumClick={this.equals}>=</ButtonsForFunc>        
                <ButtonToClear clearInput={this.clearInput}/>
                <button id="back-button" onClick={() => this.backspace()}>Back</button>
