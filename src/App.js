@@ -168,6 +168,13 @@ class App extends Component {
       }
       return f;
   }
+  
+  plusMinusOperator = () => {
+    this.setState({
+      input: this.state.input * -1
+    })
+  }
+  
 
   factorial = () => {
     let num = this.state.input;
@@ -190,12 +197,6 @@ class App extends Component {
     }
   }
 
-  
-  plusMinusOperator = () => {
-    this.setState({
-      input: this.state.input * -1
-    })
-  }
 
   percentage = () => {
     this.setState({
