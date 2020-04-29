@@ -18,12 +18,13 @@ class App extends Component {
     this.factorialSinCos = this.factorialSinCos.bind(this);
     this.absVal = this.absVal.bind(this);
   }
-
+  
 
   tallytoInput = value => {
     if ((this.state.currentNum === "") && this.state.prevNum === "" && this.state.operator === "-") {
       this.setState({ 
-        input: this.state.input + (value * -1)
+        input: (value * -1),
+        // input: (this.state.input + value * -1)
       });
     } else {
       this.setState({ 
@@ -39,9 +40,9 @@ class App extends Component {
       input: "",
       currentNum: "",
       operator: "",
-   });
+    });
   };
-
+  
   
   operatorClicked = (e) => {
     const {value} = e.target
@@ -51,21 +52,20 @@ class App extends Component {
       operator: value
       // you could also use [name]: value and add name to const {value, name} = e.target
     });
-    console.log(this.state.operator)
   };
   
-
+  
   backspace = () => {
     try {
       this.setState({
         input: this.state.input.toString().slice(0, -1)
       })
     } catch (e) {
-        this.setState({
+      this.setState({
             input: "error"
         })
       }
-  };
+    };
 
 
   decimal = value => {
@@ -75,7 +75,7 @@ class App extends Component {
       });
     }
   };
-
+  
   
   equals = () => { 
     this.state.currentNum = this.state.input;
@@ -95,18 +95,26 @@ class App extends Component {
       this.setState({
         input: parseFloat(this.state.prevNum) / parseFloat(this.state.currentNum)
       });
-    } else if (this.state.operator === "factorial") {
-      this.setState({
-        input: parseFloat(this.state.prevNum) ** parseFloat(this.state.currentNum)
-      })
-    } 
-  }
+    }  else if (this.state.operator === "exponent" && this.state.currentNum === "" && this.state.prevNum === "" && this.state.operator === "-") {
+        this.setState({
+          input: (parseFloat(this.state.prevNum) ** parseFloat(this.state.currentNum)) * -1
+        })
+      } else if (this.state.operator === "exponent" && this.state.input > 0) {
+        this.setState({
+          input: parseFloat(this.state.prevNum) ** parseFloat(this.state.currentNum)
+        })
+      }
+    }
 
-  absVal = (integer) => {
-    return integer < 0 ? -integer : integer;
-  }
+    
+    
 
-  sin = () => {
+    absVal = (integer) => {
+      return integer < 0 ? -integer : integer;
+    }
+    
+    sin = () => {
+    // debugger
     let x = this.state.input;
     while (this.absVal(x) > ( 2 * 3.14159)) {
       x -= (x / this.absVal(x)) * (2 * 3.14159)
@@ -152,14 +160,20 @@ class App extends Component {
 
   factorial = () => {
     let num = this.state.input;
-    if (num === 0) return 1;
-    let f = 1;
-    for (let i = 1; i < num; i++) {
-        f = f * (i + 1);
-      }
-    this.setState({
-      input: f
-    })
+    if (this.state.input < 0) {
+      this.setState({
+        input: "Error"
+      })
+    } else {
+        if (num === 0) return 1;
+        let f = 1;
+        for (let i = 1; i < num; i++) {
+          f = f * (i + 1);
+        }
+        this.setState({
+          input: f
+        })
+    }
   }
 
   
@@ -168,12 +182,24 @@ class App extends Component {
       input: this.state.input * -1
     })
   }
+
+  percentage = () => {
+    this.setState({
+      input: this.state.input / 100
+    })
+  }
   
 
   squareRoot = () => {
+    if (this.state.input < 0) {
+      this.setState({
+        input: "Error"
+      })
+    } else {
     this.setState({
       input: this.state.input **(1/2)
     })
+  }
   }
   
   
@@ -214,7 +240,7 @@ class App extends Component {
               <button className="buttons" value="+" onClick={this.operatorClicked}>+</button>
               <button className="buttons" value="-" onClick={this.operatorClicked}>-</button>
               <button className="buttons" onClick={this.squareRoot} >√</button>
-              <button className="buttons" value="factorial" onClick={this.operatorClicked}>y^x</button>
+              <button className="buttons" value="exponent" onClick={this.operatorClicked}>y^x</button>
             </div>
 
             <div className="rows">
@@ -222,6 +248,8 @@ class App extends Component {
               <button className="buttons" onClick={this.factorial}>x!</button>
               <button className="buttons" onClick={this.sin}>sin</button> 
               <button className="buttons" onClick={this.cos}>cos</button> 
+              <button className="buttons" onClick={this.percentage}>%</button> 
+              
             </div>
 
             <div className="rows">
