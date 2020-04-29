@@ -110,13 +110,12 @@ class App extends Component {
         })
       }
     }
-
-    
     
 
     absVal = (integer) => {
       return integer < 0 ? -integer : integer;
     }
+
     
     sin = () => {
     // debugger
@@ -133,7 +132,9 @@ class App extends Component {
     }
     this.setState({
         input: estimate,
-        operator: `sin(${this.state.input}) =`
+        operator: `sin(${this.state.input}) =`,
+        prevNum: "",
+        currentNum: ""
       })
   }
 
@@ -151,7 +152,9 @@ class App extends Component {
     }
     this.setState({
         input: estimate,
-        operator: `cos(${this.state.input}) =`
+        operator: `cos(${this.state.input}) =`,
+        prevNum: "",
+        currentNum: ""
       })
   }
 
@@ -179,7 +182,9 @@ class App extends Component {
         }
         this.setState({
           input: f,
-          operator: `${this.state.input}! =`
+          operator: `${this.state.input}! =`,
+          prevNum: "",
+          currentNum: ""
         })
     }
   }
@@ -194,7 +199,9 @@ class App extends Component {
   percentage = () => {
     this.setState({
       input: this.state.input / 100,
-      operator: `${this.state.input}% =`
+      operator: `${this.state.input}% =`,
+      prevNum: "",
+      currentNum: ""
     })
   }
   
@@ -207,7 +214,10 @@ class App extends Component {
     } else {
     this.setState({
       input: this.state.input **(1/2),
-      operator: `√ ${this.state.input} =`
+      operator: `√ ${this.state.input} =`,
+      prevNum: "",
+      currentNum: ""
+
     })
   }
   }
