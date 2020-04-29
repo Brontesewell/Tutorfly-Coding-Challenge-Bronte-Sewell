@@ -223,7 +223,7 @@ class App extends Component {
           <h1 id="title">Calculator</h1>
           <h4 id="name">Bronte Sewell</h4>
           <div id="equation">
-              <h6>{this.state.prevNum}</h6>
+              <h6 id="prevNum">{this.state.prevNum}</h6>
               <h6>{this.state.operator}</h6>
               <h6>{this.state.currentNum}</h6>
               {this.state.clickedEquals ? <h6> = </h6> : null}
