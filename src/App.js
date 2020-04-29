@@ -25,6 +25,7 @@ class App extends Component {
     if ((this.state.currentNum === "") && this.state.prevNum === "" && this.state.operator === "-") {
       this.setState({ 
         input: (value * -1),
+        operator: ""
         // input: (this.state.input + value * -1)
       });
     } else {
@@ -214,12 +215,28 @@ class App extends Component {
     } else {
     this.setState({
       input: this.state.input **(1/2),
-      operator: `√ ${this.state.input} =`,
+      operator: `2√ ${this.state.input} =`,
       prevNum: "",
       currentNum: ""
 
     })
   }
+  }
+
+  cubeRoot = () => {
+    let x = this.state.input
+    if (0 <= x){
+      this.setState({
+        input: x ** parseFloat(1/3),
+        operator: `3√ ${this.state.input} =`,
+        prevNum: "",
+        currentNum: ""
+      })
+    } else {
+      this.setState({
+        input: "Error"
+      })
+    }
   }
   
   
@@ -261,23 +278,24 @@ class App extends Component {
 
             <div className="rows">
               <ButtonsForFunc handleNumClick={this.tallytoInput}>0</ButtonsForFunc>
+              <ButtonsForFunc handleNumClick={this.decimal}>.</ButtonsForFunc>
+              <button className="buttons" onClick={this.percentage}>%</button> 
               <button className="buttons" value="/" onClick={this.operatorClicked}>/</button>
-              <button className="buttons" value="*" onClick={this.operatorClicked}>*</button>
             </div>
 
             <div className="rows">
+              <button className="buttons" value="*" onClick={this.operatorClicked}>*</button>
               <button className="buttons" value="+" onClick={this.operatorClicked}>+</button>
               <button className="buttons" value="-" onClick={this.operatorClicked}>-</button>
-              <button className="buttons" onClick={this.squareRoot} >√</button>
               <button className="buttons" value="^" onClick={this.operatorClicked}>y^x</button>
+              <button className="buttons" onClick={this.factorial}>x!</button>
             </div>
 
             <div className="rows">
-              <ButtonsForFunc handleNumClick={this.decimal}>.</ButtonsForFunc>
-              <button className="buttons" onClick={this.factorial}>x!</button>
+              <button className="buttons" onClick={this.squareRoot} >2√x</button>
+              <button className="buttons" onClick={this.cubeRoot}>3√x</button> 
               <button className="buttons" onClick={this.sin}>sin</button> 
               <button className="buttons" onClick={this.cos}>cos</button> 
-              <button className="buttons" onClick={this.percentage}>%</button> 
               
             </div>
 
