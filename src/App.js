@@ -14,6 +14,7 @@ class App extends Component {
       input: "",
       currentNum: "",
       operator: "",
+      clickedEquals: null
     };
     this.factorialSinCos = this.factorialSinCos.bind(this);
     this.absVal = this.absVal.bind(this);
@@ -40,6 +41,7 @@ class App extends Component {
       input: "",
       currentNum: "",
       operator: "",
+      clickedEquals: null
     });
   };
   
@@ -79,6 +81,9 @@ class App extends Component {
   
   equals = () => { 
     this.state.currentNum = this.state.input;
+    this.setState({
+      clickedEquals: true
+    })
     if (this.state.operator === "+") {
       this.setState({
         input: parseFloat(this.state.prevNum) + parseFloat(this.state.currentNum)
@@ -95,11 +100,11 @@ class App extends Component {
       this.setState({
         input: parseFloat(this.state.prevNum) / parseFloat(this.state.currentNum)
       });
-    }  else if (this.state.operator === "exponent" && this.state.currentNum === "" && this.state.prevNum === "" && this.state.operator === "-") {
+    }  else if (this.state.operator === "^" && this.state.currentNum === "" && this.state.prevNum === "" && this.state.operator === "-") {
         this.setState({
           input: (parseFloat(this.state.prevNum) ** parseFloat(this.state.currentNum)) * -1
         })
-      } else if (this.state.operator === "exponent" && this.state.input > 0) {
+      } else if (this.state.operator === "^" && this.state.input > 0) {
         this.setState({
           input: parseFloat(this.state.prevNum) ** parseFloat(this.state.currentNum)
         })
@@ -127,7 +132,8 @@ class App extends Component {
       estimate = -1.0
     }
     this.setState({
-        input: estimate
+        input: estimate,
+        operator: `sin(${this.state.input}) =`
       })
   }
 
@@ -144,7 +150,8 @@ class App extends Component {
       estimate = -1.0
     }
     this.setState({
-        input: estimate
+        input: estimate,
+        operator: `cos(${this.state.input}) =`
       })
   }
 
@@ -171,7 +178,8 @@ class App extends Component {
           f = f * (i + 1);
         }
         this.setState({
-          input: f
+          input: f,
+          operator: `${this.state.input}! =`
         })
     }
   }
@@ -185,7 +193,8 @@ class App extends Component {
 
   percentage = () => {
     this.setState({
-      input: this.state.input / 100
+      input: this.state.input / 100,
+      operator: `${this.state.input}% =`
     })
   }
   
@@ -197,7 +206,8 @@ class App extends Component {
       })
     } else {
     this.setState({
-      input: this.state.input **(1/2)
+      input: this.state.input **(1/2),
+      operator: `√ ${this.state.input} =`
     })
   }
   }
@@ -206,12 +216,21 @@ class App extends Component {
 
 
   render() {
+    console.log(this.state.prevNum)
     return (
       <div className="App">
         <div >
-         <h1 id="title">Calculator</h1>
-         <h4 id="name">Bronte Sewell</h4>
-         <Input input={this.state.input}/>
+          <h1 id="title">Calculator</h1>
+          <h4 id="name">Bronte Sewell</h4>
+          <div id="equation">
+              <h6>{this.state.prevNum}</h6>
+              <h6>{this.state.operator}</h6>
+              <h6>{this.state.currentNum}</h6>
+              {this.state.clickedEquals ? <h6> = </h6> : null}
+              <h6> {this.state.input}</h6>
+          </div>
+          <Input input={this.state.input}/>
+
             <div className="rows">
               <ButtonsForFunc handleNumClick={this.tallytoInput}>1</ButtonsForFunc>
               <ButtonsForFunc handleNumClick={this.tallytoInput}>2</ButtonsForFunc>
@@ -240,7 +259,7 @@ class App extends Component {
               <button className="buttons" value="+" onClick={this.operatorClicked}>+</button>
               <button className="buttons" value="-" onClick={this.operatorClicked}>-</button>
               <button className="buttons" onClick={this.squareRoot} >√</button>
-              <button className="buttons" value="exponent" onClick={this.operatorClicked}>y^x</button>
+              <button className="buttons" value="^" onClick={this.operatorClicked}>y^x</button>
             </div>
 
             <div className="rows">

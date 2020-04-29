@@ -77,3 +77,12 @@
   background-color: blue;
   color: white;
 }
+
+
+#equation{
+  color: white;
+  background-color: black;
+  display: flex;
+  width: 100%;
+  height: 30px;
+}
