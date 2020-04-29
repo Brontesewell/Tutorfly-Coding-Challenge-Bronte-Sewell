@@ -17,14 +17,13 @@ class App extends Component {
     };
     this.factorialSinCos = this.factorialSinCos.bind(this);
     this.absVal = this.absVal.bind(this);
-    // this.log = this.log.bind(this);
   }
 
 
   tallytoInput = value => {
     if ((this.state.currentNum === "") && this.state.prevNum === "" && this.state.operator === "-") {
       this.setState({ 
-        input: this.state.input + (value * -1)  
+        input: this.state.input + (value * -1)
       });
     } else {
       this.setState({ 
@@ -181,7 +180,6 @@ class App extends Component {
 
 
   render() {
- 
     return (
       <div className="App">
         <div >
